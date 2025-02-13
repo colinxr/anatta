@@ -25,10 +25,6 @@ SHOP_DOMAIN=your_shop_domain.myshopify.com
 SHOPIFY_ACCESS_TOKEN=your_access_token
 ```
 
-bash
-node app.js -n "product name"
-
-````
 
 ## Usage
 
@@ -37,9 +33,9 @@ node app.js -n "product name"
 ````
 
 Example output:
-Product A - Small - $10.00
-Product B - Medium - $15.00
-Product A - Large - $20.00
+Product A - Small - $10.00  
+Product B - Medium - $15.00  
+Product A - Large - $20.00  
 
 ## Project Structure
 
