@@ -1,4 +1,8 @@
 import dotenv from "dotenv"
+import yargs from "yargs"
+import { hideBin } from "yargs/helpers"
+import ShopifyClient from "./shopifyClient.js"
+import ProductService from "./productService.js"
 
 // Load environment variables
 dotenv.config()
@@ -13,3 +17,30 @@ if (!SHOP_DOMAIN || !ACCESS_TOKEN) {
   )
   process.exit(1)
 }
+
+// Initialize services
+const shopifyClient = new ShopifyClient(SHOP_DOMAIN, ACCESS_TOKEN)
+const productService = new ProductService(shopifyClient)
+
+// Parse command line arguments
+const argv = yargs(hideBin(process.argv))
+  .option("name", {
+    alias: "n",
+    description: "Product name to search for",
+    type: "string",
+    demandOption: true,
+  })
+  .help().argv
+
+// Execute the search
+async function main() {
+  try {
+    const products = await productService.searchProducts(argv.name)
+    console.log(products)
+  } catch (error) {
+    console.error("Error:", error.message)
+    process.exit(1)
+  }
+}
+
+main()
