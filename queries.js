@@ -8,9 +8,7 @@ export const SEARCH_PRODUCTS_QUERY = `
             edges {
               node {
                 title
-                price {
-                  amount
-                }
+                price
               }
             }
           }

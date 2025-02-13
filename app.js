@@ -36,7 +36,7 @@ const argv = yargs(hideBin(process.argv))
 async function main() {
   try {
     const products = await productService.searchProducts(argv.name)
-    console.log(products)
+    products.forEach(line => console.log(line))
   } catch (error) {
     console.error("Error:", error.message)
     process.exit(1)
