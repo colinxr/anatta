@@ -36,7 +36,7 @@ class ProductService {
   async searchProducts(searchTerm) {
     const data = await this.queryProducts(searchTerm)
     const variants = this.extractVariants(data.products)
-    const sortedVariants = this.sortVariantsByPrice(variants)
+    const sortedVariants = this.sortVariantsByPrice(variants, true)
     return sortedVariants.map(variant => this.formatVariant(variant))
   }
 }
